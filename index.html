@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✏️ EDIT: Update title, description, and OG tags below -->
+  <title>Harsh Vardhan Arya — Backend Engineer</title>
+  <meta name="description" content="Backend Engineer (SDE-II) specializing in Java, Spring Boot, Node.js, AWS, and Distributed Systems. Building scalable systems that power real products." />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title"       content="Harsh Vardhan Arya — Backend Engineer" />
+  <meta property="og:description" content="Building scalable systems that power real products." />
+  <meta property="og:type"        content="website" />
+  <!-- ✏️ EDIT: Update og:url with your actual deployed URL -->
+  <meta property="og:url"         content="https://harshvardhanarya.github.io/portfolio" />
+
+  <!-- ─── Fonts (Google Fonts CDN) ─────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- ─── Tailwind CSS CDN ─────────────────────────────────────────────── -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ─── Devicons CDN (skill icons) ───────────────────────────────────── -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+  <!-- ─── Local CSS ─────────────────────────────────────────────────────── -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       CUSTOM CURSOR
+       ══════════════════════════════════════════════════════════════════════ -->
+  <div class="cursor-dot"  id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SCROLL PROGRESS BAR (top of viewport)
+       ══════════════════════════════════════════════════════════════════════ -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       LOADING SCREEN
+       ══════════════════════════════════════════════════════════════════════ -->
+  <div class="loader" id="loader">
+    <div class="loader__content">
+      <!-- ✏️ EDIT: Update initials here -->
+      <span class="loader__initials">HVA</span>
+      <div class="loader__bar"><div class="loader__fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       NAVBAR
+       ══════════════════════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__container">
+      <!-- ✏️ EDIT: Update logo initials here -->
+      <a href="#hero" class="navbar__logo">
+        <span class="navbar__logo-bracket">&lt;</span>HVA<span class="navbar__logo-bracket">/&gt;</span>
+      </a>
+
+      <ul class="navbar__links" id="navLinks">
+        <!-- ✏️ EDIT: Add/remove nav items here — keep href matching section id -->
+        <li><a href="#about"      class="navbar__link">About</a></li>
+        <li><a href="#skills"     class="navbar__link">Skills</a></li>
+        <li><a href="#projects"   class="navbar__link">Projects</a></li>
+        <li><a href="#experience" class="navbar__link">Experience</a></li>
+        <li><a href="#contact"    class="navbar__link">Contact</a></li>
+      </ul>
+
+      <!-- ✏️ EDIT: Replace # with your resume PDF path or Google Drive link -->
+      <a href="#" class="navbar__resume-btn" target="_blank" rel="noopener">Resume</a>
+
+      <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SECTION 1: HERO
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section id="hero" class="hero">
+    <div class="hero__bg-grid"></div>
+    <div class="hero__particles" id="heroParticles"></div>
+
+    <div class="hero__container">
+
+      <!-- Left: Text content -->
+      <div class="hero__content">
+        <p class="hero__greeting animate-fade-up">Hello, World! 👋</p>
+
+        <!-- ✏️ EDIT: Update your name here -->
+        <h1 class="hero__name animate-fade-up delay-1">
+          Harsh Vardhan <span class="hero__name-accent">Arya</span>
+        </h1>
+
+        <div class="hero__role animate-fade-up delay-2">
+          <span class="hero__role-prefix">I'm a </span>
+          <span class="hero__role-typed" id="typedRole"></span>
+          <span class="hero__cursor">|</span>
+        </div>
+
+        <!-- ✏️ EDIT: Update your tagline here -->
+        <p class="hero__tagline animate-fade-up delay-3">
+          Building scalable systems that power real products.
+        </p>
+
+        <div class="hero__ctas animate-fade-up delay-4">
+          <a href="#projects" class="btn btn--primary">View My Work <span>↓</span></a>
+          <!-- ✏️ EDIT: Replace # with your resume download link -->
+          <a href="#" class="btn btn--ghost" download>Download Resume</a>
+        </div>
+
+        <!-- ✏️ EDIT: Update all social links and email below -->
+        <div class="hero__socials animate-fade-up delay-5">
+          <a href="https://github.com/harshvardhanarya" target="_blank" rel="noopener"
+             class="hero__social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/harshvardhanarya" target="_blank" rel="noopener"
+             class="hero__social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <!-- ✏️ EDIT: Replace with your actual email -->
+          <a href="mailto:harsharya3107@gmail.com" class="hero__social-link" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Terminal visual -->
+      <div class="hero__visual animate-fade-left delay-3">
+        <div class="terminal">
+          <div class="terminal__header">
+            <span class="terminal__btn terminal__btn--red"></span>
+            <span class="terminal__btn terminal__btn--yellow"></span>
+            <span class="terminal__btn terminal__btn--green"></span>
+            <span class="terminal__title">harsh@portfolio:~$</span>
+          </div>
+          <!-- ✏️ EDIT: Update terminal content to reflect your stack/personality -->
+          <div class="terminal__body">
+            <div class="terminal__line"><span class="terminal__prompt">$</span>&nbsp;<span class="terminal__cmd">who_am_i</span></div>
+            <div class="terminal__line terminal__output">Harsh Vardhan Arya</div>
+            <div class="terminal__line"><span class="terminal__prompt">$</span>&nbsp;<span class="terminal__cmd">cat skills.json</span></div>
+            <div class="terminal__line terminal__output">{</div>
+            <div class="terminal__line terminal__output">&nbsp;&nbsp;<span class="terminal__key">"backend"</span>: [<span class="terminal__str">"Java"</span>, <span class="terminal__str">"Spring Boot"</span>, <span class="terminal__str">"Node.js"</span>],</div>
+            <div class="terminal__line terminal__output">&nbsp;&nbsp;<span class="terminal__key">"cloud"</span>: [<span class="terminal__str">"AWS"</span>, <span class="terminal__str">"Docker"</span>, <span class="terminal__str">"CI/CD"</span>],</div>
+            <div class="terminal__line terminal__output">&nbsp;&nbsp;<span class="terminal__key">"data"</span>: [<span class="terminal__str">"PostgreSQL"</span>, <span class="terminal__str">"DynamoDB"</span>],</div>
+            <div class="terminal__line terminal__output">&nbsp;&nbsp;<span class="terminal__key">"passion"</span>: <span class="terminal__str">"Distributed Systems 🚀"</span></div>
+            <div class="terminal__line terminal__output">}</div>
+            <div class="terminal__line"><span class="terminal__prompt">$</span>&nbsp;<span class="terminal__cmd">./run --mode=hire-me</span></div>
+            <div class="terminal__line terminal__output terminal__output--success">✓ Great choice! Let's build something.</div>
+            <div class="terminal__line"><span class="terminal__prompt">$</span>&nbsp;<span class="terminal__cursor-blink">_</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero__scroll-indicator">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SECTION 2: ABOUT ME
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Get to know me</span>
+        <h2 class="section__title">About <span class="accent">Me</span></h2>
+        <div class="section__divider"></div>
+      </div>
+
+      <div class="about__grid">
+
+        <!-- Left: Bio -->
+        <div class="about__bio reveal">
+          <!-- ✏️ EDIT: Update bio paragraphs — keep it personal, not corporate -->
+          <p class="about__bio-text">
+            I'm a Backend Engineer with <strong>3+ years of experience</strong> designing and shipping
+            distributed systems at scale. Currently at <strong>Head Digital Works</strong>, I architect
+            backend services that handle real-time data pipelines and event-driven workflows for
+            millions of users.
+          </p>
+          <p class="about__bio-text">
+            I graduated from <strong>IIT Kanpur</strong> with a B.Tech in Electrical
+            Engineering — which taught me to think in systems. That same mindset drives how I approach
+            software: clean abstractions, resilient architecture, and code that's easy to reason about.
+          </p>
+          <p class="about__bio-text">
+            When I'm not deep in distributed systems, I'm exploring cloud-native patterns, contributing
+            to open source, or chasing the next hard problem.
+          </p>
+          <!-- ✏️ EDIT: Update social links here -->
+          <div class="about__links">
+            <a href="https://linkedin.com/in/harshvardhanarya" target="_blank" rel="noopener" class="about__link">LinkedIn →</a>
+            <a href="https://github.com/harshvardhanarya"      target="_blank" rel="noopener" class="about__link">GitHub →</a>
+          </div>
+        </div>
+
+        <!-- Right: Stat cards -->
+        <!-- ✏️ EDIT: Update data-count values and labels for each stat card -->
+        <div class="about__stats reveal delay-2">
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="3">0</span>
+            <span class="stat-card__plus">+</span>
+            <span class="stat-card__label">Years Experience</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="3">0</span>
+            <span class="stat-card__label">Companies</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" data-count="10">0</span>
+            <span class="stat-card__plus">+</span>
+            <span class="stat-card__label">Technologies</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number iit-text">IIT</span>
+            <span class="stat-card__label">Kanpur Graduate</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SECTION 3: SKILLS
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section id="skills" class="section skills">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">What I work with</span>
+        <h2 class="section__title">Tech <span class="accent">Stack</span></h2>
+        <div class="section__divider"></div>
+      </div>
+
+      <!-- ✏️ EDIT: Add/remove filter tabs — data-filter must match data-category on pills -->
+      <div class="skills__tabs" id="skillTabs">
+        <button class="skills__tab skills__tab--active" data-filter="all">All</button>
+        <button class="skills__tab" data-filter="backend">Backend</button>
+        <button class="skills__tab" data-filter="cloud">Cloud &amp; DevOps</button>
+        <button class="skills__tab" data-filter="frontend">Frontend</button>
+        <button class="skills__tab" data-filter="databases">Databases &amp; Tools</button>
+      </div>
+
+      <!--
+        ✏️ EDIT: Add a new skill pill by copying one of the blocks below.
+        Set data-category to one of: backend | cloud | frontend | databases
+        Find devicon class names at: https://devicon.dev
+      -->
+      <div class="skills__grid" id="skillsGrid">
+
+        <!-- BACKEND -->
+        <div class="skill-pill" data-category="backend">
+          <i class="devicon-java-plain colored"></i><span>Java</span>
+        </div>
+        <div class="skill-pill" data-category="backend">
+          <i class="devicon-spring-plain colored"></i><span>Spring Boot</span>
+        </div>
+        <div class="skill-pill" data-category="backend">
+          <i class="devicon-nodejs-plain colored"></i><span>Node.js</span>
+        </div>
+        <div class="skill-pill" data-category="backend">
+          <i class="devicon-express-original"></i><span>Express</span>
+        </div>
+        <div class="skill-pill" data-category="backend">
+          <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span>REST APIs</span>
+        </div>
+        <div class="skill-pill" data-category="backend">
+          <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="#FF6600"><rect width="24" height="24" rx="5" fill="#FF6600"/><text x="4" y="16" font-size="9" fill="white" font-family="monospace" font-weight="bold">MQ</text></svg>
+          <span>RabbitMQ</span>
+        </div>
+        <div class="skill-pill" data-category="backend">
+          <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+          <span>Microservices</span>
+        </div>
+
+        <!-- CLOUD & DEVOPS -->
+        <div class="skill-pill" data-category="cloud">
+          <i class="devicon-amazonwebservices-plain-wordmark colored"></i><span>AWS</span>
+        </div>
+        <div class="skill-pill" data-category="cloud">
+          <i class="devicon-docker-plain colored"></i><span>Docker</span>
+        </div>
+        <div class="skill-pill" data-category="cloud">
+          <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="#FF9900"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <span>AWS Lambda</span>
+        </div>
+        <div class="skill-pill" data-category="cloud">
+          <svg class="skill-icon-svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#FF9900"/><text x="4" y="16" font-size="9" fill="white" font-family="monospace" font-weight="bold">ECS</text></svg>
+          <span>AWS ECS</span>
+        </div>
+        <div class="skill-pill" data-category="cloud">
+          <i class="devicon-githubactions-plain colored"></i><span>CI/CD</span>
+        </div>
+        <div class="skill-pill" data-category="cloud">
+          <i class="devicon-linux-plain"></i><span>Linux</span>
+        </div>
+
+        <!-- FRONTEND -->
+        <div class="skill-pill" data-category="frontend">
+          <i class="devicon-react-original colored"></i><span>React</span>
+        </div>
+        <div class="skill-pill" data-category="frontend">
+          <i class="devicon-html5-plain colored"></i><span>HTML5</span>
+        </div>
+        <div class="skill-pill" data-category="frontend">
+          <i class="devicon-css3-plain colored"></i><span>CSS3</span>
+        </div>
+        <div class="skill-pill" data-category="frontend">
+          <i class="devicon-javascript-plain colored"></i><span>JavaScript</span>
+        </div>
+
+        <!-- DATABASES & TOOLS -->
+        <div class="skill-pill" data-category="databases">
+          <i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span>
+        </div>
+        <div class="skill-pill" data-category="databases">
+          <svg class="skill-icon-svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#FF9900"/><text x="3" y="16" font-size="8" fill="white" font-family="monospace" font-weight="bold">DDB</text></svg>
+          <span>DynamoDB</span>
+        </div>
+        <div class="skill-pill" data-category="databases">
+          <i class="devicon-mysql-plain colored"></i><span>MySQL</span>
+        </div>
+        <div class="skill-pill" data-category="databases">
+          <i class="devicon-git-plain colored"></i><span>Git</span>
+        </div>
+        <div class="skill-pill" data-category="databases">
+          <i class="devicon-postman-plain colored"></i><span>Postman</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SECTION 4: PROJECTS
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">What I've built</span>
+        <h2 class="section__title">Featured <span class="accent">Projects</span></h2>
+        <div class="section__divider"></div>
+      </div>
+
+      <div class="projects__grid">
+
+        <!--
+          ✏️ HOW TO ADD A NEW PROJECT:
+          1. Copy one full project-card block below
+          2. Update: category badge, title, description, stack tags, GitHub/demo links
+          3. Remove project-card--featured class if not a featured project
+          4. Add reveal + delay-N class to control entrance animation timing
+        -->
+
+        <!-- PROJECT CARD 1 — ✏️ EDIT: title, description, stack, links -->
+        <!-- PROJECT CARD: Update title, description, stack, and links here -->
+        <div class="project-card project-card--featured reveal">
+          <div class="project-card__badge project-card__badge--featured">⭐ Featured</div>
+          <div class="project-card__category">Backend</div>
+          <h3 class="project-card__title">Distributed Task Scheduler</h3>
+          <p class="project-card__desc">
+            Fault-tolerant microservice for async task queuing and scheduling. Handles thousands
+            of concurrent jobs with guaranteed delivery, retry logic, and dead-letter queue support.
+          </p>
+          <div class="project-card__stack">
+            <!-- ✏️ EDIT: Add/remove tech stack tags -->
+            <span class="project-card__tag">Java</span>
+            <span class="project-card__tag">Spring Boot</span>
+            <span class="project-card__tag">RabbitMQ</span>
+            <span class="project-card__tag">Docker</span>
+            <span class="project-card__tag">AWS ECS</span>
+          </div>
+          <div class="project-card__links">
+            <!-- ✏️ EDIT: Replace # with actual links -->
+            <a href="#" class="project-card__link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="#" class="project-card__link project-card__link--demo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Live Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT CARD 2 — ✏️ EDIT: title, description, stack, links -->
+        <!-- PROJECT CARD: Update title, description, stack, and links here -->
+        <div class="project-card project-card--featured reveal delay-1">
+          <div class="project-card__badge project-card__badge--featured">⭐ Featured</div>
+          <div class="project-card__category">Cloud / Event-Driven</div>
+          <h3 class="project-card__title">Real-time Notification Engine</h3>
+          <p class="project-card__desc">
+            Event-driven notification pipeline processing multi-channel alerts (push, email, SMS)
+            at scale. Built on serverless architecture with automatic fan-out and delivery guarantees.
+          </p>
+          <div class="project-card__stack">
+            <span class="project-card__tag">Node.js</span>
+            <span class="project-card__tag">AWS Lambda</span>
+            <span class="project-card__tag">SNS</span>
+            <span class="project-card__tag">SQS</span>
+            <span class="project-card__tag">DynamoDB</span>
+          </div>
+          <div class="project-card__links">
+            <a href="#" class="project-card__link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="#" class="project-card__link project-card__link--demo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Live Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT CARD 3 — ✏️ EDIT: title, description, stack, links -->
+        <!-- PROJECT CARD: Update title, description, stack, and links here -->
+        <div class="project-card reveal delay-2">
+          <div class="project-card__category">Backend / Security</div>
+          <h3 class="project-card__title">API Gateway &amp; Auth Service</h3>
+          <p class="project-card__desc">
+            Centralized authentication and authorization microservice with JWT tokens, refresh
+            rotation, and fine-grained role-based access control across multiple internal services.
+          </p>
+          <div class="project-card__stack">
+            <span class="project-card__tag">Java</span>
+            <span class="project-card__tag">Spring Security</span>
+            <span class="project-card__tag">PostgreSQL</span>
+            <span class="project-card__tag">Docker</span>
+          </div>
+          <div class="project-card__links">
+            <a href="#" class="project-card__link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="#" class="project-card__link project-card__link--demo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Live Demo
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT CARD 4 — ✏️ EDIT: Replace with your own project -->
+        <!-- PROJECT CARD: Update title, description, stack, and links here -->
+        <div class="project-card reveal delay-3">
+          <!-- ✏️ EDIT: Update category -->
+          <div class="project-card__category">Your Category</div>
+          <!-- ✏️ EDIT: Update title -->
+          <h3 class="project-card__title">Your Project Title</h3>
+          <!-- ✏️ EDIT: Update description — what it does + why it matters -->
+          <p class="project-card__desc">
+            Add your project description here. What problem does it solve? What makes it
+            interesting from an engineering standpoint? 2–3 lines max.
+          </p>
+          <div class="project-card__stack">
+            <!-- ✏️ EDIT: Add/remove tags -->
+            <span class="project-card__tag">Tech 1</span>
+            <span class="project-card__tag">Tech 2</span>
+            <span class="project-card__tag">Tech 3</span>
+          </div>
+          <div class="project-card__links">
+            <!-- ✏️ EDIT: Replace # with actual links -->
+            <a href="#" class="project-card__link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="#" class="project-card__link project-card__link--demo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Live Demo
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SECTION 5: EXPERIENCE & EDUCATION TIMELINE
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section id="experience" class="section experience">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">My journey</span>
+        <h2 class="section__title">Experience &amp; <span class="accent">Education</span></h2>
+        <div class="section__divider"></div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline__line" id="timelineLine"></div>
+
+        <!--
+          ✏️ HOW TO ADD A TIMELINE ENTRY:
+          1. Copy one timeline__item block
+          2. Alternate data-side="left" and data-side="right"
+          3. Use timeline__dot--work (blue) or timeline__dot--edu (purple)
+          4. Use timeline__type-badge--work or --edu accordingly
+          5. Add reveal + delay-N for entrance animation
+        -->
+
+        <!-- ENTRY 1: Peeko — ✏️ EDIT role, dates, bullets, stack -->
+        <div class="timeline__item timeline__item--work reveal" data-side="left">
+          <div class="timeline__dot timeline__dot--work"></div>
+          <div class="timeline__card">
+            <div class="timeline__card-header">
+              <div>
+                <span class="timeline__type-badge timeline__type-badge--work">Work</span>
+                <!-- ✏️ EDIT: Role title -->
+                <h3 class="timeline__role">Software Developer II</h3>
+                <!-- ✏️ EDIT: Company name -->
+                <p class="timeline__company">Peeko</p>
+              </div>
+              <!-- ✏️ EDIT: Date range -->
+              <span class="timeline__date">October 2025 – March 2026</span>
+            </div>
+            <!-- ✏️ EDIT: Update bullet points — keep to 2-3 impactful points -->
+            <ul class="timeline__bullets">
+              <li>Designed and shipped backend microservices handling real-time data pipelines for 1M+ daily active users.</li>
+              <li>Led migration from monolith to event-driven architecture using RabbitMQ, reducing p99 latency by 40%.</li>
+              <li>Built AWS ECS-deployed containers with zero-downtime blue-green CI/CD deployments.</li>
+            </ul>
+            <!-- ✏️ EDIT: Tech stack used -->
+            <div class="timeline__stack">
+              <span>Java / Kotlin</span><span>Spring Boot</span><span>AWS</span><span>Postgres</span><span>Docker</span>
+              <span>React Native</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 2: Head Digital Works — ✏️ EDIT role, dates, bullets, stack -->
+        <div class="timeline__item timeline__item--work reveal" data-side="right">
+          <div class="timeline__dot timeline__dot--work"></div>
+          <div class="timeline__card">
+            <div class="timeline__card-header">
+              <div>
+                <span class="timeline__type-badge timeline__type-badge--work">Work</span>
+                <!-- ✏️ EDIT: Role title -->
+                <h3 class="timeline__role">Software Developer</h3>
+                <!-- ✏️ EDIT: Company name -->
+                <p class="timeline__company">Head Digital Works</p>
+              </div>
+              <!-- ✏️ EDIT: Date range -->
+              <span class="timeline__date">July 2023 – September 2025</span>
+            </div>
+            <!-- ✏️ EDIT: Update bullet points — keep to 2-3 impactful points -->
+            <ul class="timeline__bullets">
+              <li>Designed and shipped backend microservices handling real-time data pipelines for 1M+ daily active users.</li>
+              <li>Led migration from monolith to event-driven architecture using RabbitMQ, reducing p99 latency by 40%.</li>
+              <li>Built AWS ECS-deployed containers with zero-downtime blue-green CI/CD deployments.</li>
+            </ul>
+            <!-- ✏️ EDIT: Tech stack used -->
+            <div class="timeline__stack">
+              <span>Java</span><span>Spring Boot</span><span>AWS</span><span>RabbitMQ</span><span>Docker</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 3: Edgeverve — ✏️ EDIT role, dates, bullets, stack -->
+        <div class="timeline__item timeline__item--work reveal delay-1" data-side="left">
+          <div class="timeline__dot timeline__dot--work"></div>
+          <div class="timeline__card">
+            <div class="timeline__card-header">
+              <div>
+                <span class="timeline__type-badge timeline__type-badge--work">Internship</span>
+                <h3 class="timeline__role">SDE Intern</h3>
+                <p class="timeline__company">Edgeverve Systems (Infosys)</p>
+              </div>
+              <span class="timeline__date">May 2022 – Jul 2022</span>
+            </div>
+            <ul class="timeline__bullets">
+              <li>Developed REST API modules for enterprise workflow automation product used by Fortune 500 clients.</li>
+              <li>Wrote integration tests reducing regression rate by 25%, adopted into team's standard CI pipeline.</li>
+            </ul>
+            <div class="timeline__stack">
+              <span>Java</span><span>Spring</span><span>REST APIs</span><span>JUnit</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRY 3: IIT Kanpur — ✏️ EDIT degree, institution, dates, bullets -->
+        <div class="timeline__item timeline__item--edu reveal delay-2" data-side="right">
+          <div class="timeline__dot timeline__dot--edu"></div>
+          <div class="timeline__card">
+            <div class="timeline__card-header">
+              <div>
+                <span class="timeline__type-badge timeline__type-badge--edu">Education</span>
+                <h3 class="timeline__role">B.Tech — Electrical Engineering</h3>
+                <p class="timeline__company">Indian Institute of Technology, Kanpur</p>
+              </div>
+              <span class="timeline__date">2019 – 2023</span>
+            </div>
+            <ul class="timeline__bullets">
+              <li>Core coursework: Algorithms, Data Structures, Operating Systems, Computer Networks.</li>
+              <li>Built strong systems-thinking foundation directly applied to distributed software architecture.</li>
+            </ul>
+            <div class="timeline__stack">
+              <span>IIT Kanpur</span><span>Algorithms</span><span>Systems Design</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SECTION 6: CONTACT
+       ══════════════════════════════════════════════════════════════════════ -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Get in touch</span>
+        <h2 class="section__title">Let's <span class="accent">Talk</span></h2>
+        <div class="section__divider"></div>
+        <p class="contact__intro">Open to new opportunities and interesting problems.</p>
+      </div>
+
+      <div class="contact__grid">
+
+        <!-- Left: Info -->
+        <div class="contact__info reveal">
+          <p class="contact__copy">
+            Whether you're hiring for a backend role, exploring technical collaboration, or just want to
+            geek out over distributed systems — my inbox is always open.
+          </p>
+          <div class="contact__items">
+            <!-- ✏️ EDIT: Update email here (both href and display text) -->
+            <a href="mailto:harsh@example.com" class="contact__item">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+              harsh@example.com
+            </a>
+            <!-- ✏️ EDIT: Update LinkedIn URL and display text -->
+            <a href="https://linkedin.com/in/harshvardhanarya" target="_blank" rel="noopener" class="contact__item">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              linkedin.com/in/harshvardhanarya
+            </a>
+            <!-- ✏️ EDIT: Update GitHub URL and display text -->
+            <a href="https://github.com/harshvardhanarya" target="_blank" rel="noopener" class="contact__item">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              github.com/harshvardhanarya
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Contact form -->
+        <div class="contact__form-wrap reveal delay-2">
+          <!--
+            ✏️ EDIT FORM BACKEND:
+            Option A — Formspree: replace YOUR_FORM_ID with your form ID from formspree.io
+            Option B — Mailto:   set action="mailto:your@email.com" method="get"
+          -->
+          <form class="contact__form" id="contactForm"
+                action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form__group">
+              <label for="name"    class="form__label">Name</label>
+              <input  type="text"  id="name"    name="name"    class="form__input"
+                      placeholder="John Doe" required />
+            </div>
+            <div class="form__group">
+              <label for="email"   class="form__label">Email</label>
+              <input  type="email" id="email"   name="email"   class="form__input"
+                      placeholder="john@company.com" required />
+            </div>
+            <div class="form__group">
+              <label for="message" class="form__label">Message</label>
+              <textarea id="message" name="message" class="form__textarea" rows="5"
+                        placeholder="Tell me about the role or project..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
+              Send Message
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <!-- ✏️ EDIT: Update name and year -->
+        <p class="footer__copy">
+          Designed &amp; built by <span class="accent">Harsh Vardhan Arya</span> · 2025
+        </p>
+        <p class="footer__made-with">Made with ☕ and too many terminal tabs.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SCROLL-TO-TOP BUTTON
+       ══════════════════════════════════════════════════════════════════════ -->
+  <button class="scroll-top" id="scrollTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       EASTER EGG TERMINAL (Konami Code: ↑↑↓↓←→←→BA)
+       ✏️ EDIT: Update the fun facts inside the terminal
+       ══════════════════════════════════════════════════════════════════════ -->
+  <div class="easter-egg-modal" id="easterEggModal">
+    <div class="easter-egg-terminal">
+      <div class="terminal">
+        <div class="terminal__header">
+          <span class="terminal__btn terminal__btn--red" id="closeEasterEgg" style="cursor:pointer"></span>
+          <span class="terminal__btn terminal__btn--yellow"></span>
+          <span class="terminal__btn terminal__btn--green"></span>
+          <span class="terminal__title">secret.sh — You found the easter egg 🎉</span>
+        </div>
+        <!-- ✏️ EDIT: Update fun facts here -->
+        <div class="terminal__body">
+          <div class="terminal__line terminal__output terminal__output--success">🎉 Konami Code Activated: ↑↑↓↓←→←→BA</div>
+          <div class="terminal__line terminal__output">&nbsp;</div>
+          <div class="terminal__line terminal__output">Fun facts about Harsh:</div>
+          <div class="terminal__line terminal__output">→ Debugs production issues faster than coffee brews ☕</div>
+          <div class="terminal__line terminal__output">→ Once optimised a DB query from 10s → 80ms</div>
+          <div class="terminal__line terminal__output">→ IIT Kanpur EE grad who writes more Java than circuits</div>
+          <div class="terminal__line terminal__output">→ Believes every system should be observable by default</div>
+          <div class="terminal__line terminal__output">&nbsp;</div>
+          <div class="terminal__line terminal__output terminal__output--success">$ ./hire-harsh --immediately</div>
+          <div class="terminal__line terminal__output">Great decision. 🚀</div>
+          <div class="terminal__line">&nbsp;</div>
+          <div class="terminal__line terminal__output" style="color:var(--clr-text-faint);font-size:0.75rem;">[ Click the red dot or press Esc to close ]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── Scripts (loaded last for performance) ──────────────────────────── -->
+  <script src="js/typing.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

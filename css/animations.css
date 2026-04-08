@@ -1,0 +1,139 @@
+/* ==========================================================================
+   animations.css — All keyframes, entrance animations, and transition helpers
+   Portfolio: Harsh Vardhan Arya
+
+   ✏️ TIMING EDITS:
+   - Hero stagger delays   → edit .delay-N under "Stagger delays"
+   - Reveal threshold      → edit rootMargin in animations.js
+   - Typewriter speed      → edit TYPING_SPEED in typing.js
+   ========================================================================== */
+
+
+/* ─── Keyframes ──────────────────────────────────────────────────────────── */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes loaderFill {
+  0%   { width: 0%;   }
+  60%  { width: 80%;  }
+  100% { width: 100%; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(48px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scrollBob {
+  0%, 100% { opacity: 1;   transform: scaleY(1);   }
+  50%       { opacity: 0.3; transform: scaleY(0.5); }
+}
+
+@keyframes floatParticle {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) translateX(0);
+  }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.15; }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) translateX(var(--drift, 40px));
+  }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.82) translateY(20px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(124,58,237,0.15); }
+  50%       { box-shadow: 0 0 48px rgba(124,58,237,0.45); }
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1);   }
+  50%       { transform: scale(1.5); }
+}
+
+
+/* ─── Hero entrance — triggered when .loaded is added to <body> ──────────── */
+/*     JS adds .loaded after the loader fades out                             */
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+  animation-play-state: paused;
+}
+.animate-fade-left {
+  opacity: 0;
+  animation: fadeLeft 0.85s ease forwards;
+  animation-play-state: paused;
+}
+
+/* Start playing once loader is gone */
+.loaded .animate-fade-up,
+.loaded .animate-fade-left {
+  animation-play-state: running;
+}
+
+
+/* ─── Stagger delays ─────────────────────────────────────────────────────── */
+/*     ✏️ EDIT: Add delay-6, delay-7 etc. if you add more hero elements      */
+.delay-1 { animation-delay: 0.12s; }
+.delay-2 { animation-delay: 0.24s; }
+.delay-3 { animation-delay: 0.40s; }
+.delay-4 { animation-delay: 0.56s; }
+.delay-5 { animation-delay: 0.72s; }
+
+
+/* ─── Scroll-reveal (Intersection Observer) ──────────────────────────────── */
+/*     JS in animations.js adds .reveal--visible when element enters view     */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+/* Transition delays for staggered reveals inside a grid/flex parent */
+.reveal.delay-1 { transition-delay: 0.10s; }
+.reveal.delay-2 { transition-delay: 0.20s; }
+.reveal.delay-3 { transition-delay: 0.30s; }
+.reveal.delay-4 { transition-delay: 0.40s; }
+.reveal--visible { opacity: 1; transform: translateY(0); }
+
+
+/* ─── Terminal line cascade ──────────────────────────────────────────────── */
+/*     Lines start hidden; each fades in sequentially after .loaded is set   */
+
+.terminal__line {
+  opacity: 0;
+  animation: fadeIn 0.25s ease forwards;
+  animation-play-state: paused;
+}
+.loaded .terminal__line:nth-child(1)  { animation-play-state: running; animation-delay: 0.7s;  }
+.loaded .terminal__line:nth-child(2)  { animation-play-state: running; animation-delay: 0.9s;  }
+.loaded .terminal__line:nth-child(3)  { animation-play-state: running; animation-delay: 1.2s;  }
+.loaded .terminal__line:nth-child(4)  { animation-play-state: running; animation-delay: 1.4s;  }
+.loaded .terminal__line:nth-child(5)  { animation-play-state: running; animation-delay: 1.6s;  }
+.loaded .terminal__line:nth-child(6)  { animation-play-state: running; animation-delay: 1.8s;  }
+.loaded .terminal__line:nth-child(7)  { animation-play-state: running; animation-delay: 2.0s;  }
+.loaded .terminal__line:nth-child(8)  { animation-play-state: running; animation-delay: 2.2s;  }
+.loaded .terminal__line:nth-child(9)  { animation-play-state: running; animation-delay: 2.4s;  }
+.loaded .terminal__line:nth-child(10) { animation-play-state: running; animation-delay: 2.6s;  }
+.loaded .terminal__line:nth-child(11) { animation-play-state: running; animation-delay: 2.85s; }
+.loaded .terminal__line:nth-child(12) { animation-play-state: running; animation-delay: 3.05s; }

@@ -1,0 +1,167 @@
+/* ==========================================================================
+   responsive.css — Breakpoints and mobile adjustments
+   Portfolio: Harsh Vardhan Arya
+
+   Breakpoints:
+   Large   > 1400px  (wide screens)
+   Desktop  1024px   (default — full layout)
+   Tablet   768–1024px
+   Mobile  < 768px
+   Small   < 480px
+   ========================================================================== */
+
+
+/* ─── Large screens: > 1400px ────────────────────────────────────────────── */
+@media (min-width: 1400px) {
+  .container        { max-width: 1320px; }
+  .projects__grid   { grid-template-columns: repeat(4, 1fr); }
+}
+
+
+/* ─── Tablet: 768px – 1024px ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  /* Hero: stack vertically, hide terminal */
+  .hero__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: calc(80px + var(--sp-6));
+  }
+  .hero__visual   { display: none; }
+  .hero__tagline  { max-width: 100%; }
+  .hero__ctas,
+  .hero__socials  { justify-content: center; }
+
+  /* About: stack vertically */
+  .about__grid  { grid-template-columns: 1fr; }
+  .about__stats { grid-template-columns: repeat(4, 1fr); }
+
+  /* Projects: 2-column */
+  .projects__grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Timeline: tighten horizontal spacing */
+  .timeline__item { width: calc(50% - var(--sp-4)); }
+
+  /* Contact: stack vertically */
+  .contact__grid { grid-template-columns: 1fr; }
+}
+
+
+/* ─── Mobile: < 768px ────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  /* ── Navbar: hamburger menu ── */
+  .navbar__links {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: min(280px, 75vw);
+    background: rgba(10,10,15,0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: calc(80px + var(--sp-3)) var(--sp-5) var(--sp-5);
+    gap: var(--sp-5);
+    transform: translateX(100%);
+    transition: transform var(--transition-slow);
+    z-index: calc(var(--z-nav) - 1);
+    border-left: 1px solid var(--clr-border);
+  }
+  .navbar__links--open  { transform: translateX(0); }
+  .navbar__link         { font-size: var(--fs-xl); }
+  .navbar__resume-btn   { display: none; }
+  .navbar__hamburger    { display: flex; }
+
+  /* ── Hero ── */
+  .hero__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: calc(80px + var(--sp-5));
+  }
+  .hero__visual  { display: none; }
+  .hero__ctas,
+  .hero__socials { justify-content: center; }
+  .hero__tagline { max-width: 100%; }
+  .btn { padding: 0.65rem var(--sp-3); font-size: var(--fs-sm); }
+
+  /* ── About ── */
+  .about__grid  { grid-template-columns: 1fr; }
+  .about__stats { grid-template-columns: 1fr 1fr; }
+  .about__links { justify-content: center; }
+
+  /* ── Skills ── */
+  .skills__tabs {
+    gap: var(--sp-1);
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: var(--sp-1);
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .skills__tab { font-size: var(--fs-xs); padding: 0.4rem var(--sp-2); white-space: nowrap; }
+
+  /* ── Projects: single column ── */
+  .projects__grid { grid-template-columns: 1fr; }
+
+  /* ── Timeline: single column on left ── */
+  .timeline__line {
+    left: 18px;
+  }
+  .timeline__item {
+    width: calc(100% - 44px) !important;
+    margin-left: 44px !important;
+    margin-right: 0 !important;
+    text-align: left !important;
+  }
+  /* Reset all left-side (right-aligned) overrides */
+  .timeline__item[data-side="left"] .timeline__card-header { flex-direction: row;         }
+  .timeline__item[data-side="left"] .timeline__stack       { justify-content: flex-start;  }
+  .timeline__item[data-side="left"] .timeline__bullets li  {
+    padding-left: var(--sp-3);
+    padding-right: 0;
+  }
+  .timeline__item[data-side="left"] .timeline__bullets li::before { left: 0; right: auto; }
+
+  /* All dots on left side of line */
+  .timeline__dot {
+    left: calc(-44px + 10px) !important;
+    right: auto !important;
+  }
+
+  /* ── Contact ── */
+  .contact__grid    { grid-template-columns: 1fr; }
+  .contact__form-wrap { padding: var(--sp-4); }
+
+  /* ── Custom cursor: hide on touch devices ── */
+  .cursor-dot, .cursor-ring { display: none; }
+  body    { cursor: auto; }
+  a, button { cursor: pointer; }
+
+  /* ── Scroll top ── */
+  .scroll-top { bottom: var(--sp-3); right: var(--sp-3); }
+}
+
+
+/* ─── Small mobile: < 480px ──────────────────────────────────────────────── */
+@media (max-width: 479px) {
+  .section { padding: var(--sp-8) 0; }
+  .hero__ctas { flex-direction: column; align-items: center; }
+  .about__stats { grid-template-columns: 1fr 1fr; }
+  .contact__form-wrap { padding: var(--sp-3); }
+  .section__title { letter-spacing: -0.01em; }
+}
+
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal            { opacity: 1; transform: none; }
+  .animate-fade-up,
+  .animate-fade-left { opacity: 1; transform: none; }
+  .terminal__line    { opacity: 1; }
+}
